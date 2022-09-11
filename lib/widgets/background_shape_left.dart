@@ -23,8 +23,8 @@ class LeftShape extends StatelessWidget {
         ),
         SizedBox(width: 5),
         Text(
-          'شاخص مثبت',
-          style: TextStyle(color: greenBackground),
+          'Positive index',
+          style: TextStyle(color: Colors.white),
         ),
       ],
     );

@@ -11,8 +11,8 @@ class RightShape extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Text(
-          'شاخص منفی',
-          style: TextStyle(color: redBackground),
+          'Negative index',
+          style: TextStyle(color: Colors.white),
         ),
         SizedBox(width: 5),
         Container(

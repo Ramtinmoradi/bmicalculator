@@ -1,135 +1,92 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bmi_calculator_app/constants/constants.dart';
-import 'package:flutter_bmi_calculator_app/widgets/background_shape_left.dart';
-import 'package:flutter_bmi_calculator_app/widgets/background_shape_right.dart';
+import 'package:flutter_bmi_calculator_app/screens/menbmi_screens.dart';
+import 'package:flutter_bmi_calculator_app/screens/womenbmi_screens.dart';
 
-class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key}) : super(key: key);
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  double resultBMI = 0;
-  String resultText = '';
-
-  final weightController = TextEditingController();
-  final heightController = TextEditingController();
-
-  double widthGood = 100.0;
-  double widthBad = 100.0;
+  void navigateTo(BuildContext context, Widget page) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (BuildContext context) {
+          return page;
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: Text(
-          'BMI محاسبه ',
-          style: TextStyle(color: Colors.black),
-        ),
+        backgroundColor: blueGreenBackground,
+        elevation: 0.0,
+        title: Text('BMI Calculator'),
         centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
       ),
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  width: 130.0,
-                  child: TextField(
-                    controller: weightController,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 26.0,
-                      color: redBackground,
-                    ),
-                    keyboardType: TextInputType.datetime,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'وزن',
-                      hintStyle: TextStyle(
-                        color: redBackground.withOpacity(0.4),
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  width: 130.0,
-                  child: TextField(
-                    controller: heightController,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 26.0,
-                      color: redBackground,
-                    ),
-                    keyboardType: TextInputType.datetime,
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: 'قد',
-                      hintStyle: TextStyle(
-                        color: redBackground.withOpacity(0.4),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(height: 40.0),
-            InkWell(
-              onTap: () {
-                final weight = double.parse(weightController.text);
-                final height = double.parse(heightController.text);
+      body: _getBody(context),
+    );
+  }
 
-                setState(() {
-                  resultBMI = weight / (height * height);
-                  if (resultBMI > 25) {
-                    resultText = 'شما اضافه وزن دارید';
-                    widthBad = 250.0;
-                    widthGood = 50.0;
-                  } else if (resultBMI >= 18.5 && resultBMI <= 25) {
-                    resultText = 'وزن شما نرمال است';
-                    widthBad = 50.0;
-                    widthGood = 250.0;
-                  } else {
-                    resultText = 'شما کمبود وزن دارید';
-                    widthBad = 120.0;
-                    widthGood = 120.0;
-                  }
-                });
-              },
-              child: Text(
-                'محاسبه کن',
-                style: TextStyle(
-                  fontSize: 26,
+  Widget _getBody(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 300.0,
+              child: Image(
+                image: AssetImage('images/FirstPage.png'),
+              ),
+            ),
+            SizedBox(height: 20.0),
+            Text(
+              'Select Your Gender',
+              style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            SizedBox(height: 10.0),
+            Container(
+              width: 200.0,
+              height: 40.0,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: blueGreenBackground,
+                ),
+                onPressed: () {
+                  navigateTo(context, BMIMen());
+                },
+                child: Text(
+                  'Male',
+                  style: TextStyle(fontSize: 16.0),
                 ),
               ),
             ),
-            SizedBox(height: 40.0),
-            Text(
-              resultBMI.toStringAsFixed(2),
-              style: TextStyle(fontSize: 25.0),
-            ),
-            SizedBox(height: 40.0),
-            Text(
-              resultText,
-              style: TextStyle(
-                fontSize: 20.0,
-                color: redBackground,
+            SizedBox(height: 5.0),
+            Container(
+              width: 200.0,
+              height: 40.0,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: blueGreenBackground,
+                ),
+                onPressed: () {
+                  navigateTo(context, BMIWomen());
+                },
+                child: Text(
+                  'Female',
+                  style: TextStyle(fontSize: 16.0),
+                ),
               ),
             ),
-            SizedBox(height: 80.0),
-            RightShape(width: widthBad),
-            SizedBox(height: 15),
-            LeftShape(width: widthGood),
           ],
         ),
-      ),
+      ],
     );
   }
 }
