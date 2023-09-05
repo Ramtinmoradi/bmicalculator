@@ -25,68 +25,65 @@ class HomeScreen extends StatelessWidget {
         title: Text('BMI Calculator'),
         centerTitle: true,
       ),
-      body: _getBody(context),
-    );
-  }
-
-  Widget _getBody(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 300.0,
-              child: Image(
-                image: AssetImage('images/FirstPage.png'),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: 20.0),
+              Text(
+                'Select Your Gender',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            SizedBox(height: 20.0),
-            Text(
-              'Select Your Gender',
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            SizedBox(height: 10.0),
-            Container(
-              width: 200.0,
-              height: 40.0,
-              child: ElevatedButton(
+              SizedBox(height: 10.0),
+              ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  minimumSize: Size(250.0, 50.0),
                   backgroundColor: blueGreenBackground,
                 ),
                 onPressed: () {
-                  navigateTo(context, BMIMen());
+                  navigateTo(
+                    context,
+                    BMIMen(),
+                  );
                 },
-                child: Text(
-                  'Male',
-                  style: TextStyle(fontSize: 16.0),
+                child: Center(
+                  child: Text(
+                    'Male',
+                    style: TextStyle(
+                      fontSize: 16.5,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: 5.0),
-            Container(
-              width: 200.0,
-              height: 40.0,
-              child: ElevatedButton(
+              SizedBox(height: 5.0),
+              ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  minimumSize: Size(250.0, 50.0),
                   backgroundColor: blueGreenBackground,
                 ),
                 onPressed: () {
                   navigateTo(context, BMIWomen());
                 },
-                child: Text(
-                  'Female',
-                  style: TextStyle(fontSize: 16.0),
+                child: Center(
+                  child: Text(
+                    'Female',
+                    style: TextStyle(
+                      fontSize: 16.5,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

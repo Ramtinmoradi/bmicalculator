@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hexcolor/hexcolor.dart';
 
-final Color blueBackground = HexColor('#00B0FF');
-final Color blueGreenBackground = HexColor('#00BFA5');
-final Color cyanBackground = HexColor('#00ACC1');
+final Color blueBackground = Color(0xff00B0FF);
+final Color blueGreenBackground = Color(0xff00BFA5);
+final Color cyanBackground = Color(0xff00ACC1);

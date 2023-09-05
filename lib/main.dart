@@ -5,14 +5,9 @@ void main() {
   runApp(Application());
 }
 
-class Application extends StatefulWidget {
+class Application extends StatelessWidget {
   Application({Key? key}) : super(key: key);
 
-  @override
-  State<Application> createState() => _ApplicationState();
-}
-
-class _ApplicationState extends State<Application> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

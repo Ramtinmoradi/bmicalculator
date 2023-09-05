@@ -1,0 +1,4 @@
+#Fri Apr 14 14:01:41 IRDT 2023
+base.0=/Users/mac/Desktop/Flutter Project/BMICalculator/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

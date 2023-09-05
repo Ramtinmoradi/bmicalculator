@@ -14,7 +14,7 @@ class LeftShape extends StatelessWidget {
           height: 40.0,
           width: width,
           decoration: BoxDecoration(
-            color: greenBackground,
+            color: Colors.green,
             borderRadius: BorderRadius.only(
               topRight: Radius.circular(20),
               bottomRight: Radius.circular(20),

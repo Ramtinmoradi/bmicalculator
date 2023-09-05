@@ -19,7 +19,7 @@ class RightShape extends StatelessWidget {
           height: 40.0,
           width: width,
           decoration: BoxDecoration(
-            color: redBackground,
+            color: Colors.red,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(20),
               topLeft: Radius.circular(20),
